@@ -1,0 +1,201 @@
+{
+    "editor.formatOnSave": true,
+    "files.autoSave": "afterDelay",
+    "extensions.ignoreRecommendations": false,
+    "editor.fontSize": 15,
+    "window.zoomLevel": 1.15,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    // 一般情况我们看代码是从上往下看的，这个设置 hover 代码后浮窗出现在上方，挡住了内容，还得移动一下鼠标让浮窗消失再出现，建议取消
+    "editor.hover.above": false,
+    // 代码折叠
+    "editor.folding": true,
+    "editor.foldingHighlight": true,
+    "editor.showFoldingControls": "always",
+    "editor.autoClosingComments": "always",
+    // 缩进参考线
+    "editor.guides.indentation": true,
+    "editor.guides.highlightActiveBracketPair": true,
+    // 鼠标悬停
+    "editor.hover.delay": 300,
+    "editor.hover.enabled": true,
+    "editor.hover.hidingDelay": 0,
+    "editor.hover.sticky": true,
+    "terminal.integrated.smoothScrolling": true,
+    "editor.stickyScroll.defaultModel": "outlineModel",
+    "editor.stickyScroll.enabled": true,
+    "editor.find.addExtraSpaceOnTop": true,
+    "workbench.commandPalette.experimental.suggestCommands": true,
+    "workbench.commandPalette.preserveInput": true,
+    "workbench.tree.enableStickyScroll": true,
+    "search.seedOnFocus": true,
+    // 是否在资源管理器中显示 .gitignore 中的文件
+    "explorer.excludeGitIgnore": false,
+    "git.autoStash": true,
+    // 复制是否带语法高亮
+    "editor.copyWithSyntaxHighlighting": false,
+    "editor.wordWrap": "on",
+    "editor.lineHeight": 1.5,
+    // python跳转失效修改如下配置
+    "python.languageServer": "Pylance",
+    "liveServer.settings.root": "Pylance",
+    // "python.languageServer": "Jedi",
+    // "liveServer.settings.root": "Jedi",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "typescript.preferGoToSourceDefinition": true,
+    "javascript.preferGoToSourceDefinition": true,
+    "editor.gotoLocation.alternativeImplementationCommand": "editor.action.goToReferences",
+    "editor.gotoLocation.alternativeReferenceCommand": "editor.action.goToReferences",
+    "editor.formatOnPaste": true,
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.enableTroubleshootMissingImports": true,
+    "python.terminal.shellIntegration.enabled": true,
+    "python.analysis.typeCheckingMode": "strict",
+    "git.openRepositoryInParentFolders": "always",
+    // 是否跳转到当前文件夹为止再执行Python文件
+    "python.terminal.executeInFileDir": false,
+    "python.terminal.focusAfterLaunch": true,
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    // 文件夹紧凑模式
+    "explorer.compactFolders": false,
+    "notebook.compactView": true,
+    "search.searchEditor.singleClickBehaviour": "peekDefinition",
+    // 跳转到定义
+    "editor.gotoLocation.multipleDefinitions": "peek",
+    "editor.gotoLocation.multipleImplementations": "peek",
+    "editor.gotoLocation.multipleReferences": "peek",
+    // 行内样式代码补全
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    },
+    "terminal.integrated.stickyScroll.enabled": true,
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.smoothScrolling": true,
+    "editor.cursorBlinking": "expand",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "terminal.integrated.tabs.enabled": true,
+    "workbench.list.smoothScrolling": true,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "terminal.integrated.fontFamily": "monospace",
+    "redhat.telemetry.enabled": false,
+    "python.disableInstallationCheck": false,
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "python.envFile": "${workspaceFolder}/.env",
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceRoot}"
+    },
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceRoot}"
+    },
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "${workspaceRoot}"
+    },
+    "isort.args": [
+        "--settings-path=${workspaceFolder}/pyproject.toml"
+    ],
+    "black-formatter.args": [
+        "--config=${workspaceFolder}/pyproject.toml"
+    ],
+    "flake8.args": [
+        "--config=${workspaceFolder}/pyproject.toml"
+    ],
+    "mypy-type-checker.args": [
+        "--config-file=${workspaceFolder}/pyproject.toml"
+    ],
+    "pylint.args": [
+        "--rcfile=${workspaceFolder}/pyproject.toml"
+    ],
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        "editor.formatOnSave": true
+    },
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.indexing": true,
+    "python.analysis.completeFunctionParens": true,
+    "editor.rulers": [
+        {
+            "column": 99,
+            "color": "#FFFFFF"
+        },
+        {
+            "column": 119,
+            "color": "#90EE90"
+        }
+    ],
+    "editor.guides.bracketPairs": true,
+    "editor.bracketPairColorization.enabled": true,
+    // 控制活动代码段是否阻止快速建议
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    // 除了 `Tab` 键以外， `Enter` 键是否同样可以接受建议
+    // 这能减少“插入新行”和“接受建议”命令之间的歧义
+    "editor.acceptSuggestionOnEnter": "smart",
+    // 代码补全列表中，优先选择最近的建议
+    "editor.suggestSelection": "recentlyUsed",
+    "editor.suggest.insertMode": "replace",
+    "editor.autoClosingBrackets": "beforeWhitespace",
+    "editor.autoClosingDelete": "always",
+    "editor.autoClosingOvertype": "always",
+    "editor.autoClosingQuotes": "beforeWhitespace",
+    // 关闭缩进猜测
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4,
+    "window.dialogStyle": "custom",
+    // 格式化自动删分号
+    "javascript.format.semicolons": "remove",
+    "typescript.format.semicolons": "remove",
+    "typescript.inlayHints.enumMemberValues.enabled": true,
+    "typescript.locale": "zh-CN",
+    // 类型提示
+    "javascript.inlayHints.enumMemberValues.enabled": true,
+    "javascript.inlayHints.functionLikeReturnTypes.enabled": false,
+    "javascript.inlayHints.parameterNames.enabled": "none",
+    "javascript.suggest.autoImports": true,
+    "typescript.suggest.autoImports": true,
+    "vue.inlayHints.missingProps": true,
+    "vue.autoInsert.dotValue": true,
+    "files.autoGuessEncoding": true,
+    "files.trimTrailingWhitespace": false,
+    "vue.updateImportsOnFileMove.enabled": true,
+    "typescript.preferences.preferTypeOnlyAutoImports": true,
+    "terminal.integrated.shellIntegration.suggestEnabled": true,
+    "editor.wordSeparators": "`~!@%^&*()=+[{]}\\|;:'\",.<>/?（），。；：",
+    "editor.minimap.enabled": false,
+    "editor.foldingStrategy": "indentation",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.preferences.includePackageJsonAutoImports": "on",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.preferences.quoteStyle": "single",
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    // 搜索排除目录
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/pnpm-lock.yaml": true,
+        "**/package-lock.json": true,
+        "**/.DS_Store": true,
+        "**/.git": true,
+        "**/.gitignore": true,
+        "**/.idea": true,
+        "**/.svn": true,
+        "**/.venv": true,
+        "**/.vscode": true,
+        "**/build": true,
+        "**/dist": true,
+        "**/tmp": true,
+        "**/yarn.lock": true
+    },
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "explorer.openEditors.minVisible": 8
+}

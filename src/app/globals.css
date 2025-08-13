@@ -1,0 +1,286 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  line-height: 1.5;
+  font-size: 16px;
+
+  color-scheme: light dark;
+  font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"), serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  font-optical-sizing: auto;
+
+  /* Font Weight */
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+  
+  /* Base Color Palette */
+  --accent-1000: #2862fe;
+  --accent-970: #2862fef7;
+  --accent-950: #2862fef2;
+  --accent-900: #2862fee5;
+  --accent-800: #2862fecc;
+  --accent-700: #2862feb2;
+  --accent-600: #2862fe99;
+  --accent-500: #2862fe80;
+  --accent-400: #2862fe66;
+  --accent-300: #2862fe4d;
+  --accent-200: #2862fe33;
+  --accent-100: #2862fe1a;
+  --accent-50: #2862fe0d;
+  --accent-30: #2862fe08;
+  
+  --dark-1000: #0a0a0a;
+  --dark-970: #0a0a0af7;
+  --dark-950: #0a0a0af2;
+  --dark-900: #0a0a0ae5;
+  --dark-800: #0a0a0acc;
+  --dark-700: #0a0a0ab2;
+  --dark-600: #0a0a0a99;
+  --dark-500: #0a0a0a80;
+  --dark-400: #0a0a0a66;
+  --dark-300: #0a0a0a4d;
+  --dark-200: #0a0a0a33;
+  --dark-100: #0a0a0a1a;
+  --dark-50: #0a0a0a0d;
+  --dark-30: #0a0a0a08;
+  
+  --light-1000: #ffffff;
+  --light-970: #fffffff7;
+  --light-950: #fffffff2;
+  --light-900: #ffffffe5;
+  --light-800: #ffffffcc;
+  --light-700: #ffffffb2;
+  --light-600: #ffffff99;
+  --light-500: #ffffff80;
+  --light-400: #ffffff66;
+  --light-300: #ffffff4d;
+  --light-200: #ffffff33;
+  --light-100: #ffffff1a;
+  --light-50: #ffffff0d;
+  --light-30: #ffffff08;
+  
+  --error: #d61355;
+  
+  /* Light Theme Semantic Tokens */
+  --background: var(--light-1000);
+  --foreground: var(--dark-1000);
+  
+  --surface-content: var(--dark-30);
+  --surface-component: var(--dark-50);
+  --surface-light-100: var(--dark-100);
+  --surface-light-200: var(--dark-200);
+  
+  --border: var(--dark-100);
+  --border-accent: var(--accent-1000);
+  
+  --states-hover: var(--dark-30);
+  --states-selected: var(--dark-100);
+  --states-active: var(--accent-1000);
+  
+  --text-header: var(--dark-1000);
+  --text-body: var(--dark-600);
+  --text-placeholder: var(--dark-400);
+  --text-accent: var(--accent-1000);
+  --text-error: var(--error);
+  
+  --icon-active: var(--dark-1000);
+  --icon-light: var(--dark-600);
+  --icon-component: var(--dark-400);
+  --icon-accent: var(--accent-1000);
+  
+  /* Component Tokens */
+  --primary: var(--accent-1000);
+  --primary-foreground: var(--light-1000);
+  
+  --secondary: var(--surface-component);
+  --secondary-foreground: var(--text-body);
+  
+  --muted: var(--surface-light-100);
+  --muted-foreground: var(--text-body);
+  
+  --accent: var(--accent-1000);
+  --accent-foreground: var(--light-1000);
+  
+  --destructive: var(--error);
+  --destructive-foreground: var(--light-1000);
+  
+  --card: var(--surface-content);
+  --card-foreground: var(--foreground);
+  
+  --popover: var(--surface-content);
+  --popover-foreground: var(--foreground);
+  
+  --input: var(--states-hover);
+  --ring: var(--border-accent);
+}
+
+.dark {
+  /* Dark Theme Semantic Tokens */
+  --background: var(--dark-1000);
+  --foreground: var(--light-1000);
+  
+  --surface-content: var(--light-30);
+  --surface-component: var(--light-50);
+  --surface-light-100: var(--light-100);
+  --surface-light-200: var(--light-200);
+  
+  --border: var(--light-100);
+  
+  --states-hover: var(--light-30);
+  --states-selected: var(--light-100);
+  
+  --text-header: var(--light-1000);
+  --text-body: var(--light-600);
+  --text-placeholder: var(--light-400);
+  
+  --icon-active: var(--light-1000);
+  --icon-light: var(--light-600);
+  --icon-component: var(--light-400);
+  
+  --secondary-foreground: var(--text-body);
+  --muted-foreground: var(--text-body);
+
+  --card: var(--surface-content);
+  --card-foreground: var(--foreground);
+
+  --popover: var(--surface-content);
+  --popover-foreground: var(--foreground);
+
+  --input: var(--states-hover);
+  --ring: var(--border-accent);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
+
+/* React Flow 样式 - 完全照抄 motia */
+@keyframes flowDash {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -20;
+  }
+}
+
+.dark {
+  .react-flow__panel {
+    background: var(--background)
+  }
+}
+
+.font-mono {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 14px;
+}
+
+.edge-animated {
+  stroke-dasharray: 5;
+  stroke-linecap: round;
+  animation: flowDash 1s linear infinite;
+}
+
+/* React Flow 自定义样式覆盖 */
+.react-flow__node {
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* 确保节点文字在黑色主题下可见 */
+.react-flow__node .text-foreground {
+  color: var(--foreground) !important;
+}
+
+.dark .react-flow__node .text-foreground {
+  color: var(--light-1000) !important;
+}
+
+/* Handle 样式 */
+.react-flow__handle {
+  width: 12px;
+  height: 12px;
+  background: var(--accent-1000);
+  border: 2px solid var(--background);
+  border-radius: 50%;
+}
+
+.react-flow__handle-connecting {
+  background: var(--accent-800);
+}
+
+.react-flow__handle-valid {
+  background: var(--accent-1000);
+}
+
+/* 节点选中状态 */
+.react-flow__node.selected > div > div {
+  box-shadow: 0 0 0 2px var(--accent-1000);
+}
+
+.react-flow__edge-path {
+  stroke: var(--text-body);
+  stroke-width: 2;
+}
+
+.react-flow__edge.animated .react-flow__edge-path {
+  stroke-dasharray: 5;
+  animation: flowDash 1s linear infinite;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: var(--accent-1000);
+}
+
+.react-flow__controls {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.react-flow__controls button {
+  background: var(--background);
+  border: none;
+  color: var(--icon-light);
+  border-bottom: 1px solid var(--border);
+}
+
+.react-flow__controls button:hover {
+  background: var(--states-hover);
+  color: var(--icon-active);
+}
+
+.react-flow__controls button:last-child {
+  border-bottom: none;
+}
+
+.react-flow__minimap {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.react-flow__background {
+  background: var(--background);
+}
+
+.react-flow__background .react-flow__background-pattern {
+  fill: var(--border);
+}
