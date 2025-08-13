@@ -12,23 +12,26 @@ export async function POST(request: NextRequest) {
     const { description } = await request.json();
 
     if (!description) {
-      return NextResponse.json({ error: "请提供流程描述" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Please provide process description" },
+        { status: 400 }
+      );
     }
 
     const prompt = `
-你是一个专业的流程图设计师。根据用户的描述，生成一个结构化的流程图数据。
+You are a professional flowchart designer. Based on the user's description, generate structured flowchart data.
 
-用户描述：${description}
+User description: ${description}
 
-请返回一个JSON对象，包含nodes和edges数组，格式如下：
+Please return a JSON object containing nodes and edges arrays in the following format:
 {
   "nodes": [
     {
       "id": "start",
       "type": "start",
       "data": { 
-        "label": "开始",
-        "description": "流程开始点"
+        "label": "Start",
+        "description": "Process start point"
       },
       "position": { "x": 250, "y": 0 }
     },
@@ -36,8 +39,8 @@ export async function POST(request: NextRequest) {
       "id": "process1",
       "type": "process",
       "data": { 
-        "label": "处理步骤",
-        "description": "具体的处理操作"
+        "label": "Process Step",
+        "description": "Specific processing operation"
       },
       "position": { "x": 250, "y": 100 }
     },
@@ -45,11 +48,11 @@ export async function POST(request: NextRequest) {
       "id": "decision1",
       "type": "decision",
       "data": { 
-        "label": "判断条件",
-        "description": "根据条件进行分支",
+        "label": "Decision",
+        "description": "Branch based on condition",
         "conditions": [
-          { "id": "yes", "label": "是", "value": true },
-          { "id": "no", "label": "否", "value": false }
+          { "id": "yes", "label": "Yes", "value": true },
+          { "id": "no", "label": "No", "value": false }
         ]
       },
       "position": { "x": 250, "y": 200 }
@@ -58,8 +61,8 @@ export async function POST(request: NextRequest) {
       "id": "end",
       "type": "end",
       "data": { 
-        "label": "结束",
-        "description": "流程结束点"
+        "label": "End",
+        "description": "Process end point"
       },
       "position": { "x": 250, "y": 300 }
     }
@@ -85,7 +88,7 @@ export async function POST(request: NextRequest) {
       "sourceHandle": "yes",
       "animated": true,
       "data": {
-        "label": "是",
+        "label": "Yes",
         "condition": "yes",
         "type": "conditional"
       }
@@ -98,7 +101,7 @@ export async function POST(request: NextRequest) {
       "sourceHandle": "no",
       "animated": true,
       "data": {
-        "label": "否",
+        "label": "No",
         "condition": "no",
         "type": "conditional"
       }
@@ -106,33 +109,33 @@ export async function POST(request: NextRequest) {
   ]
 }
 
-节点类型说明：
-- "start": 开始节点（绿色椭圆）
-- "end": 结束节点（红色椭圆）
-- "process": 处理节点（蓝色矩形）
-- "decision": 决策节点（黄色菱形，必须有多个输出）
-- "input": 输入节点（紫色平行四边形）
-- "output": 输出节点（紫色平行四边形）
-- "document": 文档节点（橙色特殊形状）
-- "database": 数据库节点（靛蓝色圆柱形）
+Node type descriptions:
+- "start": Start node (green oval)
+- "end": End node (red oval)
+- "process": Process node (blue rectangle)
+- "decision": Decision node (yellow diamond, must have multiple outputs)
+- "input": Input node (purple parallelogram)
+- "output": Output node (purple parallelogram)
+- "document": Document node (orange special shape)
+- "database": Database node (indigo cylinder)
 
-边的属性说明：
-- source/target: 连接的节点ID
-- label: 边的标签（如条件分支的"是/否"）
-- sourceHandle: 源节点的特定连接点（决策节点用"yes"/"no"）
-- animated: 是否显示动画效果
+Edge property descriptions:
+- source/target: Connected node IDs
+- label: Edge label (such as "Yes/No" for conditional branches)
+- sourceHandle: Specific connection point of source node (use "yes"/"no" for decision nodes)
+- animated: Whether to show animation effect
 
-要求：
-1. 必须有一个type为"start"的开始节点
-2. 必须有至少一个type为"end"的结束节点
-3. 根据流程特点选择合适的节点类型
-4. 决策节点必须有至少两个输出边，使用sourceHandle区分
-5. 节点位置要合理分布，避免重叠
-6. 边要准确描述节点间的流向关系
-7. 为复杂条件添加适当的label说明
-8. 只返回JSON数据，不要其他文字说明
+Requirements:
+1. Must have one "start" type start node
+2. Must have at least one "end" type end node
+3. Choose appropriate node types based on process characteristics
+4. Decision nodes must have at least two output edges, distinguished by sourceHandle
+5. Node positions should be reasonably distributed to avoid overlap
+6. Edges should accurately describe the flow relationship between nodes
+7. Add appropriate label descriptions for complex conditions
+8. Only return JSON data, no other text descriptions
 
-请根据描述生成完整的流程图数据：
+Please generate complete flowchart data based on the description:
 `;
 
     const completion = await openai.chat.completions.create({
@@ -150,7 +153,7 @@ export async function POST(request: NextRequest) {
 
     const content = completion.choices[0]?.message?.content;
     if (!content) {
-      console.warn("AI 响应为空，使用备用流程图");
+      console.warn("AI response is empty, using fallback flowchart");
       return NextResponse.json(generateFallbackFlow(description));
     }
 
@@ -161,32 +164,41 @@ export async function POST(request: NextRequest) {
       const cleanContent = content.replace(/```json\n?|\n?```/g, "").trim();
       flowData = JSON.parse(cleanContent);
     } catch (parseError) {
-      console.error("JSON解析错误:", parseError);
-      console.error("原始内容:", content);
-      console.warn("使用备用流程图");
+      console.error("JSON parsing error:", parseError);
+      console.error("Original content:", content);
+      console.warn("Using fallback flowchart");
       return NextResponse.json(generateFallbackFlow(description));
     }
 
     // 验证数据结构
     const validatedData = validateFlowData(flowData);
     if (!validatedData) {
-      console.warn("流程图数据验证失败，使用备用流程图");
+      console.warn(
+        "Flowchart data validation failed, using fallback flowchart"
+      );
       return NextResponse.json(generateFallbackFlow(description));
     }
 
     return NextResponse.json(validatedData);
   } catch (error) {
-    console.error("生成流程图错误:", error);
+    console.error("Generate flowchart error:", error);
 
     // 如果是API调用失败，返回备用流程图而不是错误
     if (error instanceof Error && error.message.includes("API")) {
-      console.warn("API调用失败，使用备用流程图");
+      console.warn("API call failed, using fallback flowchart");
       const { description } = await request.json();
-      return NextResponse.json(generateFallbackFlow(description || "流程图"));
+      return NextResponse.json(
+        generateFallbackFlow(description || "flowchart")
+      );
     }
 
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "生成流程图失败" },
+      {
+        error:
+          error instanceof Error
+            ? error.message
+            : "Failed to generate flowchart",
+      },
       { status: 500 }
     );
   }

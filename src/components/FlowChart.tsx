@@ -44,7 +44,7 @@ export function FlowChart({ data }: FlowChartProps) {
   );
 
   const downloadImage = () => {
-    alert("导出功能开发中...");
+    alert("Export feature in development...");
   };
 
   const fitView = () => {
@@ -92,14 +92,14 @@ export function FlowChart({ data }: FlowChartProps) {
           <button
             onClick={fitView}
             className="flex items-center gap-2 px-3 py-2 text-sm bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/60 border border-border text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors shadow-sm"
-            title="适应视图"
+            title="Fit view"
           >
             <Maximize2 className="h-4 w-4" />
           </button>
           <button
             onClick={downloadImage}
             className="flex items-center gap-2 px-3 py-2 text-sm bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/60 border border-border text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors shadow-sm"
-            title="导出图片"
+            title="Export image"
           >
             <Download className="h-4 w-4" />
           </button>

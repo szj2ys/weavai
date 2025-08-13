@@ -65,7 +65,7 @@ export function validateFlowData(data: any): FlowData | null {
   const hasStart = sanitized.nodes.some((node: any) => node.type === "start");
   const hasEnd = sanitized.nodes.some((node: any) => node.type === "end");
   if (!hasStart || !hasEnd) {
-    console.warn("流程图缺少开始或结束节点");
+    console.warn("Flowchart missing start or end node");
   }
 
   return sanitized;
@@ -79,8 +79,8 @@ export function generateFallbackFlow(description: string): FlowData {
       id: "start",
       type: "start",
       data: {
-        label: "开始",
-        description: "流程开始",
+        label: "Start",
+        description: "Process start",
       },
       position: { x: 250, y: 0 },
     },
@@ -121,8 +121,8 @@ export function generateFallbackFlow(description: string): FlowData {
     id: endNodeId,
     type: "end",
     data: {
-      label: "结束",
-      description: "流程结束",
+      label: "End",
+      description: "Process end",
     },
     position: { x: 250, y: (steps.length + 1) * 120 },
   });
@@ -150,52 +150,143 @@ interface ProcessStep {
 }
 
 function extractStepsFromDescription(description: string): ProcessStep[] {
-  // 根据描述内容生成更智能的步骤
-  if (description.includes("注册") || description.includes("登录")) {
+  // Generate smarter steps based on description content
+  if (
+    description.includes("registration") ||
+    description.includes("login") ||
+    description.includes("register") ||
+    description.includes("sign up")
+  ) {
     return [
-      { name: "填写信息", description: "用户输入注册信息", type: "input" },
-      { name: "验证信息", description: "系统验证信息有效性", type: "process" },
       {
-        name: "信息是否有效",
-        description: "判断信息是否符合要求",
-        type: "decision",
+        name: "Fill Information",
+        description: "User inputs registration information",
+        type: "input",
       },
-      { name: "创建账户", description: "在系统中创建新账户", type: "process" },
-      { name: "发送确认", description: "发送注册成功通知", type: "output" },
-    ];
-  }
-
-  if (description.includes("订单") || description.includes("购买")) {
-    return [
-      { name: "选择商品", description: "用户浏览并选择商品", type: "input" },
       {
-        name: "添加到购物车",
-        description: "将商品加入购物车",
+        name: "Validate Information",
+        description: "System validates information validity",
         type: "process",
       },
-      { name: "确认订单", description: "用户确认订单信息", type: "process" },
-      { name: "库存是否充足", description: "检查商品库存", type: "decision" },
-      { name: "支付处理", description: "处理用户支付", type: "process" },
-      { name: "订单完成", description: "生成订单并通知用户", type: "output" },
+      {
+        name: "Is Information Valid?",
+        description: "Check if information meets requirements",
+        type: "decision",
+      },
+      {
+        name: "Create Account",
+        description: "Create new account in system",
+        type: "process",
+      },
+      {
+        name: "Send Confirmation",
+        description: "Send registration success notification",
+        type: "output",
+      },
     ];
   }
 
-  if (description.includes("开发") || description.includes("软件")) {
+  if (
+    description.includes("order") ||
+    description.includes("purchase") ||
+    description.includes("buy") ||
+    description.includes("e-commerce")
+  ) {
     return [
-      { name: "需求分析", description: "分析项目需求", type: "input" },
-      { name: "设计方案", description: "制定技术方案", type: "process" },
-      { name: "编码实现", description: "编写代码实现功能", type: "process" },
-      { name: "测试验证", description: "测试功能是否正常", type: "process" },
-      { name: "测试是否通过", description: "判断测试结果", type: "decision" },
-      { name: "部署上线", description: "将系统部署到生产环境", type: "output" },
+      {
+        name: "Select Product",
+        description: "User browses and selects products",
+        type: "input",
+      },
+      {
+        name: "Add to Cart",
+        description: "Add product to shopping cart",
+        type: "process",
+      },
+      {
+        name: "Confirm Order",
+        description: "User confirms order information",
+        type: "process",
+      },
+      {
+        name: "Is Stock Available?",
+        description: "Check product inventory",
+        type: "decision",
+      },
+      {
+        name: "Process Payment",
+        description: "Handle user payment",
+        type: "process",
+      },
+      {
+        name: "Order Complete",
+        description: "Generate order and notify user",
+        type: "output",
+      },
     ];
   }
 
-  // 默认通用流程
+  if (
+    description.includes("development") ||
+    description.includes("software") ||
+    description.includes("coding") ||
+    description.includes("programming")
+  ) {
+    return [
+      {
+        name: "Requirements Analysis",
+        description: "Analyze project requirements",
+        type: "input",
+      },
+      {
+        name: "Design Solution",
+        description: "Create technical solution",
+        type: "process",
+      },
+      {
+        name: "Code Implementation",
+        description: "Write code to implement features",
+        type: "process",
+      },
+      {
+        name: "Testing Verification",
+        description: "Test if functionality works properly",
+        type: "process",
+      },
+      {
+        name: "Does Test Pass?",
+        description: "Evaluate test results",
+        type: "decision",
+      },
+      {
+        name: "Deploy Online",
+        description: "Deploy system to production environment",
+        type: "output",
+      },
+    ];
+  }
+
+  // Default generic process
   return [
-    { name: "输入信息", description: "接收输入数据", type: "input" },
-    { name: "验证数据", description: "验证数据有效性", type: "process" },
-    { name: "处理请求", description: "执行业务逻辑", type: "process" },
-    { name: "返回结果", description: "输出处理结果", type: "output" },
+    {
+      name: "Input Information",
+      description: "Receive input data",
+      type: "input",
+    },
+    {
+      name: "Validate Data",
+      description: "Verify data validity",
+      type: "process",
+    },
+    {
+      name: "Process Request",
+      description: "Execute business logic",
+      type: "process",
+    },
+    {
+      name: "Return Result",
+      description: "Output processing result",
+      type: "output",
+    },
   ];
 }

@@ -20,11 +20,11 @@ export function InputPanel({ onGenerate, isLoading }: InputPanelProps) {
   };
 
   const examples = [
-    "用户注册和登录流程",
-    "电商订单处理流程",
-    "软件开发生命周期",
-    "客户服务处理流程",
-    "数据备份和恢复流程",
+    "User registration and login process",
+    "E-commerce order processing workflow",
+    "Software development lifecycle",
+    "Customer service handling process",
+    "Data backup and recovery process",
   ];
 
   return (
@@ -33,7 +33,7 @@ export function InputPanel({ onGenerate, isLoading }: InputPanelProps) {
         <div className="flex items-center gap-2">
           <Sparkles className="h-5 w-5 text-accent" />
           <h2 className="text-lg font-semibold text-foreground">
-            描述你的流程
+            Describe Your Process
           </h2>
         </div>
       </PanelHeader>
@@ -44,7 +44,7 @@ export function InputPanel({ onGenerate, isLoading }: InputPanelProps) {
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="请详细描述你想要生成的流程图，例如：用户注册流程，包括填写信息、邮箱验证、账户激活等步骤..."
+              placeholder="Please describe the flowchart you want to generate in detail, for example: user registration process, including filling in information, email verification, account activation and other steps..."
               className="w-full h-32 px-3 py-2 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent resize-none text-foreground placeholder:text-muted-foreground"
               disabled={isLoading}
             />
@@ -56,13 +56,13 @@ export function InputPanel({ onGenerate, isLoading }: InputPanelProps) {
             className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-accent-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
           >
             <Send className="h-4 w-4" />
-            {isLoading ? "生成中..." : "生成流程图"}
+            {isLoading ? "Generating..." : "Generate Flowchart"}
           </button>
         </form>
 
         <div className="mt-6">
           <h3 className="text-sm font-medium text-foreground mb-3">
-            示例流程：
+            Example Processes:
           </h3>
           <div className="space-y-1">
             {examples.map((example, index) => (

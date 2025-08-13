@@ -1,41 +1,29 @@
-# AI Flowchart Generator
+# WeavAI
 
-An intelligent flowchart generation tool powered by Next.js and AI. Simply input text descriptions to automatically generate visual flowcharts.
+**One-Click Flowchart Generation** - Simply describe your process in text, and AI automatically generates professional visual flowcharts
 
-![](./public/flows.png)
+![](./public/flow.png)
 
-## Features
+## Key Features
 
-- 🤖 AI-powered flowchart generation
-- 🎨 Interactive visualization with React Flow
-- ⚡ Real-time response and fast generation
-- 📱 Responsive design with mobile support
-- 🛠 Smart error handling
-
-## Tech Stack
-
-Next.js 15 • React 19 • TypeScript • Tailwind CSS • React Flow • OpenAI SDK
+✨ **One-Click Generation** - Input description, get complete flowchart instantly  
+🎯 **Smart Recognition** - AI automatically analyzes process logic and node relationships  
+🎨 **Interactive Editing** - Support drag, zoom, and real-time adjustments  
+📱 **Responsive Design** - Perfect for both desktop and mobile
 
 ## Quick Start
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Configure environment variables (copy .env.example to .env and fill in your API key)
-cp .env.example .env
-
-# Start development server
-pnpm dev
+pnpm install && cp .env.example .env && pnpm dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to get started.
+Visit [http://localhost:3000](http://localhost:3000) to get started
 
-## Usage
+## How to Use
 
-1. Describe your process in the input box (e.g., "user registration flow", "order processing flow")
-2. Click the generate button
-3. AI automatically analyzes and generates a visual flowchart
+1. **Input Description** - Describe your process in the text box (e.g., "user registration flow", "order processing flow")
+2. **One-Click Generate** - Click the generate button, AI automatically creates the flowchart
+3. **Ready to Use** - Get professional visual flowcharts that support export and sharing
 
 ## Deployment
 

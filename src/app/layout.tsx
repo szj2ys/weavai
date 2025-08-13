@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AI 流程图生成器",
-  description: "使用AI智能生成流程图的在线工具",
+  title: "WeavAI - AI Flowchart Generator",
+  description: "An intelligent online tool for generating flowcharts using AI",
 };
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh-CN" className="dark">
+    <html lang="en" className="dark">
       <body className="antialiased">{children}</body>
     </html>
   );

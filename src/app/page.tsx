@@ -23,14 +23,14 @@ export default function Home() {
       });
 
       if (!response.ok) {
-        throw new Error("生成流程图失败");
+        throw new Error("Failed to generate flowchart");
       }
 
       const data = await response.json();
       setFlowData(data);
     } catch (error) {
       console.error("Error:", error);
-      alert("生成流程图时出错，请重试");
+      alert("Error generating flowchart, please try again");
     } finally {
       setIsLoading(false);
     }
@@ -42,18 +42,18 @@ export default function Home() {
 
       <main className="m-2 overflow-hidden" role="main">
         <div className="grid grid-cols-[400px_1fr] gap-2 h-full">
-          {/* 左侧输入面板 */}
+          {/* Left input panel */}
           <div className="flex flex-col gap-2">
             <InputPanel onGenerate={handleGenerateFlow} isLoading={isLoading} />
           </div>
 
-          {/* 右侧流程图面板 */}
+          {/* Right flowchart panel */}
           <Panel className="flex flex-col">
             <PanelHeader>
               <div className="flex items-center gap-2">
                 <GanttChart className="h-5 w-5 text-accent" />
                 <h2 className="text-lg font-semibold text-foreground">
-                  流程图视图
+                  Flowchart View
                 </h2>
               </div>
             </PanelHeader>
@@ -64,7 +64,7 @@ export default function Home() {
                   <div className="text-center">
                     <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-accent" />
                     <p className="text-muted-foreground">
-                      AI 正在生成流程图...
+                      AI is generating flowchart...
                     </p>
                   </div>
                 </div>
@@ -74,7 +74,10 @@ export default function Home() {
                 <div className="absolute inset-0 flex items-center justify-center bg-background">
                   <div className="text-center text-muted-foreground">
                     <div className="text-6xl mb-4">🎨</div>
-                    <p>在左侧输入流程描述，开始生成流程图</p>
+                    <p>
+                      Enter process description on the left to start generating
+                      flowchart
+                    </p>
                   </div>
                 </div>
               )}
